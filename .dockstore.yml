@@ -1,0 +1,7 @@
+version: 1.2
+workflows:
+ - name: CalculateStudentGPA
+   subclass: WDL
+   primaryDescriptorPath: /pipelines/unified_quickstart/alt-2_calculate_avg_gpa.wdl
+   testParameterFiles:
+    - empty.json

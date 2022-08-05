@@ -24,12 +24,13 @@ task CalculateAverage {
         Array[Float]   scores
     }
 
-    command <<<
+    command {
+        
+        sum=$((~{sep="+" scores}))
+        echo $sum
 
-        # python -c "print(sum(~{sep="," scores}) / len(~{sep="," scores}))"
-        sum(~{sep="," scores})/len(~{sep="," scores})
-
-    >>>
+    }
+    
 
     runtime {
         docker: "broadinstitute/horsefish"

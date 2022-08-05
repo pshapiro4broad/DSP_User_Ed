@@ -26,7 +26,6 @@ task CalculateAverage {
 
     command <<<
 
-        # average = sum(~{sep="," scores}) / len(~{sep="," scores})
         # python -c "print(sum(~{sep="," scores}) / len(~{sep="," scores}))"
         sum(scores)/len(scores)
 

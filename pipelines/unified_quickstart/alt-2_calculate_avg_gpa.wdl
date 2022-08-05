@@ -27,7 +27,8 @@ task CalculateAverage {
     command <<<
 
         # average = sum(~{sep="," scores}) / len(~{sep="," scores})
-        python -c "print(sum(~{sep="," scores}) / len(~{sep="," scores}))"
+        # python -c "print(sum(~{sep="," scores}) / len(~{sep="," scores}))"
+        sum(scores)/len(scores)
 
     >>>
 
@@ -36,6 +37,6 @@ task CalculateAverage {
     }
 
     output {
-        Int average = read_int(stdout())
+        Float average = read_float(stdout())
     }
 }

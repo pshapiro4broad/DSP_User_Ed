@@ -6,7 +6,7 @@ workflow CalculateStudentGPA {
     }
 
     input {
-        Array[Int]   subject_scores
+        Array[Float]   subject_scores
     }
 
     call CalculateAverage {
@@ -21,7 +21,7 @@ workflow CalculateStudentGPA {
 
 task CalculateAverage {
     input {
-        Array[Int]   scores
+        Array[Float]   scores
     }
 
     command <<<

@@ -15,7 +15,7 @@ workflow CalculateStudentGPA {
     }
 
     output {
-        Int gpa = CalculateAverage.average
+        Float gpa = CalculateAverage.average
     }
 }
 

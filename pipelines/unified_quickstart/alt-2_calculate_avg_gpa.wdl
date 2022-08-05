@@ -24,12 +24,10 @@ task CalculateAverage {
         Array[Float]   scores
     }
 
-    command {
-        
-        sum=$((~{sep="+" scores}))
-        echo $sum
+    command <<<
+        python -c "print(~{sep="+" scores})"
 
-    }
+    >>>
     
 
     runtime {

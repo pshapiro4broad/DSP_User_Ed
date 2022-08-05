@@ -23,9 +23,10 @@ task CalculateAverage {
     input {
         Array[Float]   scores
     }
+    Int num_scores = length(scores)
 
     command <<<
-        python -c "print(~{sep="+" scores})"
+        python -c "print((~{sep="+" scores})/~{num_scores})"
 
     >>>
     

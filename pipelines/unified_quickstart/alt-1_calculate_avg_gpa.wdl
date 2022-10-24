@@ -56,9 +56,9 @@ task WriteReportFile {
 
     command {
         
-        echo -e "Total GPA:\n" > report.txt
-        echo -e "~{gpa}\n" >> report.txt
-        echo "Essay Title:\n" >> report.txt
+        echo -e "Total GPA:" > report.txt
+        echo -e "~{gpa}" >> report.txt
+        echo "Essay Title:" >> report.txt
         head -1 ~{essay} >> report.txt
     }
 

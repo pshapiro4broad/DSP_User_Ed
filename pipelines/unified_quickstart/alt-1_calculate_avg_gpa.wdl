@@ -7,7 +7,6 @@ workflow CalculateStudentGPA {
 
     input {
         Array[Float]    subject_scores
-        File            essay_file
     }
 
     call CalculateAverage {
@@ -15,15 +14,8 @@ workflow CalculateStudentGPA {
             scores  =   subject_scores
     }
 
-    call WriteReportFile {
-        input:
-            essay   = essay_file,
-            gpa     = CalculateAverage.average
-    }
-
     output {
-        Float gpa   = CalculateAverage.average
-        File report = WriteReportFile.report     
+        Float gpa   = CalculateAverage.average  
     }
 }
 
@@ -46,28 +38,4 @@ task CalculateAverage {
     output {
         Float average = read_float(stdout())
     }
-}
-
-task WriteReportFile {
-    input {
-        File    essay
-        Float   gpa
-    }
-
-    command {
-        
-        echo -e "Total GPA:" > report.txt
-        echo -e "~{gpa}" >> report.txt
-        echo "Essay Title:" >> report.txt
-        head -1 ~{essay} >> report.txt
-    }
-
-    runtime {
-        docker: "broadinstitute/horsefish"
-    }
-
-    output {
-        File    report = "report.txt"
-    }
-
 }
